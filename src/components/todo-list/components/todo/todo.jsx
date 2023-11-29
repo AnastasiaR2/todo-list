@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import { todoType } from '~/common/prop-types/prop-types.js';
 
 const Todo = ({ todo }) => {
   const { todo: title, completed, id } = todo;
@@ -11,7 +11,7 @@ const Todo = ({ todo }) => {
 };
 
 Todo.propTypes = {
-  todo: PropTypes.object.isRequired,
+  todo: todoType.isRequired,
 };
 
 export { Todo };
