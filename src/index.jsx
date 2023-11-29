@@ -17,5 +17,5 @@ root.render(
         <App />
       </PersistGate>
     </Provider>
-  </StrictMode>,
+  </StrictMode>
 );

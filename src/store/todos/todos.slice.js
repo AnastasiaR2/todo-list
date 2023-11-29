@@ -3,7 +3,7 @@ import { DataStatus } from '~/common/enums/enums.js';
 import { fetchAll } from './actions.js';
 
 const initialState = {
-  todos: [],
+  todos: null,
   dataStatus: DataStatus.IDLE,
 };
 
@@ -17,7 +17,7 @@ const { reducer, actions, name } = createSlice({
     });
     builder.addCase(fetchAll.fulfilled, (state, action) => {
       state.todos = action.payload;
-      state.getArticleStatus = DataStatus.FULFILLED;
+      state.dataStatus = DataStatus.FULFILLED;
     });
   }
 });
