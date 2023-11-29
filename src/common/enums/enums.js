@@ -1,3 +1,5 @@
-export { ApiPath } from './api/api.js';
-export { ContentType } from './file/file.js';
-export { HttpHeader, HttpMethod } from './http/http.js';
+export { ApiPath } from './api-path.enum.js';
+export { ContentType } from './content-type.enum.js';
+export { DataStatus } from './data-status.enum.js';
+export { HttpHeader } from './http-header.enum.js';
+export { HttpMethod } from './http-method.enum.js';
