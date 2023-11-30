@@ -2,14 +2,22 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
 }
 
+// #root {
+//   display: flex;
+//   flex-direction: column;
+
+//   min-height: 100vh;
+// }
+
 body {
-  margin: 0;
-  padding: 0;
   font-weight: 700;
   font-size: 32px;
   font-family: Lato, Arial, sans-serif;
+  min-height: 100vh;
+  min-width: 320px;
   // line-height: 20px;
   // font-style: normal;
   // color: var(--color-primary);
@@ -44,11 +52,6 @@ body {
 //   place-items: center;
 //   min-width: 320px;
 //   min-height: 100vh;
-// }
-
-// h1 {
-//   font-size: 3.2em;
-//   line-height: 1.1;
 // }
 
 // button {
