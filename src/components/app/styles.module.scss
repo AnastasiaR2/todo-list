@@ -1,0 +1,37 @@
+@use "~/assets/styles/breakpoints.scss";
+.wrapper {
+  margin: 95px auto 134px;
+  max-width: 1620px;
+}
+
+.back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 377px;
+  background: linear-gradient(93deg, #FFFFE0 24.79%, rgba(218, 238, 227, 0.94) 34.72%, rgba(173, 216, 230, 0.86) 51.23%, rgba(169, 223, 215, 0.84) 61.01%, rgba(163, 233, 193, 0.81) 74.91%, rgba(152, 251, 152, 0.75) 88.02%);;
+}
+
+.title {
+  text-align: center;
+  color: var(--white);
+  letter-spacing: 3.2px;
+}
+
+@media only screen and (max-width: breakpoints.$medium) {
+  .wrapper {
+    margin: 45px 25px 50px;
+  }
+
+  .back {
+    background: linear-gradient(70deg, #FFFFE0 17.5%, rgba(224, 240, 226, 0.95) 28.62%, rgba(173, 216, 230, 0.86) 63.03%, rgba(152, 251, 152, 0.75) 79.86%);
+  }
+
+  .title {
+    font-size: 36px;
+    letter-spacing: 1.8px;
+    font-weight: 800;
+  }
+}
