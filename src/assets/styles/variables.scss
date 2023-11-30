@@ -1,3 +1,18 @@
 :root {
   --white: #FFF;
+  --dark-gray: #333333;
+  --yellow: #F0E68C;
+
+  --shadow-color: rgba(0, 0, 0, 0.07);
+
+  /* border colors */
+  --light-gray-border: #E1E1E1;
+  --yellow-border: #EADE70;
+}
+
+input {
+  --input-bg: var(--white);
+  --input-shadow-color: var(--shadow-color);
+  --input-text: var(--dark-gray);
+  --input-placeholder-color: #D2D2D2;
 }
