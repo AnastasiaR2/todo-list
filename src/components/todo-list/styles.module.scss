@@ -1,0 +1,17 @@
+@use "~/assets/styles/breakpoints.scss";
+
+.listTitle {
+  color: var(--dark-gray);
+  font-size: 43px;
+  letter-spacing: 2.15px;
+  align-self: flex-start;
+  margin-bottom: 45px;
+}
+
+@media only screen and (max-width: breakpoints.$medium) {
+  .listTitle {
+    font-size: 20px;
+    letter-spacing: 0.6px;
+    margin-bottom: 25px;
+  }
+}

@@ -1,17 +1,37 @@
 import { todoType } from '~/common/prop-types/prop-types.js';
+import PropTypes from 'prop-types';
 
-const Todo = ({ todo }) => {
+import styles from './styles.module.scss';
+
+const cardBackgroundColors = ['#F0E68C', '#ADD8E6', '#FFDAB9', '#FFB6C1'];
+
+const Todo = ({ todo, index }) => {
   const { todo: title, completed, id } = todo;
+
+  const colorIndex = index % cardBackgroundColors.length;
+
+  const cardStyle = {
+    backgroundColor: cardBackgroundColors[colorIndex],
+  };
+
   return (
-    <li>
+    <div style={cardStyle} className={styles.todoCard}>
+        <div className={styles.circlesContainer}>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
         <p>{title}</p>
-        <span>{completed}</span>
-    </li>
+        <div className={styles.actionButtons}>
+          <input type="checkbox" />
+        </div>
+    </div>
   );
 };
 
 Todo.propTypes = {
   todo: todoType.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export { Todo };
