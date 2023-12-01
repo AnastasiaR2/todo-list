@@ -16,23 +16,43 @@ const Todo = ({ todo, index }) => {
     backgroundColor: cardBackgroundColors[colorIndex],
   };
 
+  const isEditing = false;
+
   return (
     <div style={cardStyle} className={styles.todoCard}>
-        <div className={styles.circlesContainer}>
-          <div></div>
-          <div></div>
-          <div></div>
+        <div className={styles.cardHeader}>
+          <div className={styles.circlesContainer}>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <p className={styles.todoTitle}>{title}</p>
         </div>
-        <p>{title}</p>
-        <div className={styles.actionButtons}>
-          <input type="checkbox" />
-          <button>
-            <Icon iconName="edit" className={getValidClassNames(styles.icon, styles.editIcon)}/>
-          </button>
-          <button>
-            <Icon iconName="delete" className={getValidClassNames(styles.icon, styles.deleteIcon)}/>
-          </button>
-        </div>
+        {!isEditing && 
+          <div className={styles.actionButtons}>
+            <button className={styles.moreActionsBtn}>
+              <Icon iconName="ellipsisVertical" className={getValidClassNames(styles.icon, styles.moreActionsIcon)}/>
+            </button>
+            <input type="checkbox" />
+            <button className={styles.iconBtn}>
+              <Icon iconName="edit" className={getValidClassNames(styles.icon, styles.editIcon)}/>
+            </button>
+            <button className={styles.iconBtn}>
+              <Icon iconName="delete" className={getValidClassNames(styles.icon, styles.deleteIcon)}/>
+            </button>
+          </div>
+        }
+        {isEditing && 
+          <div className={styles.editingButtons}>
+            <button>
+                <Icon iconName="checkmark" className={styles.icon}/>
+            </button>
+            <button>
+              <Icon iconName="revert" className={styles.icon}/>
+            </button>
+          </div>
+        }
+
     </div>
   );
 };

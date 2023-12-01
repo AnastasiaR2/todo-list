@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   padding: 95px 25px 134px;
-  max-width: 1620px;
+  max-width: 1673px;
 }
 
 .back {
@@ -30,9 +30,10 @@
   }
 }
 
+
 @media only screen and (max-width: breakpoints.$medium) {
   .wrapper {
-    padding: 45px 25px 50px;
+    padding: 45px 5% 50px;
   }
 
   .back {

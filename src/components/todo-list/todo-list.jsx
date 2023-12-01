@@ -26,7 +26,7 @@ const TodoList = () => {
   return(
     <>
       <h2 className={styles.listTitle}>You have {totalActiveTasks} active tasks:</h2>
-      <div>
+      <div className={styles.todosListContainer}>
         {todos.map((todo, index) => (
           <Todo key={todo.id} todo={todo} index={index} />
         ))}

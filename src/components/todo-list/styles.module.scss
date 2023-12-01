@@ -8,10 +8,34 @@
   margin-bottom: 45px;
 }
 
+.todosListContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 45px;
+  row-gap: 65px;
+}
+
+@media only screen and (max-width: breakpoints.$extra-extra-large) {
+  .todosListContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: breakpoints.$extra-large) {
+  .todosListContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media only screen and (max-width: breakpoints.$medium) {
   .listTitle {
     font-size: 20px;
     letter-spacing: 0.6px;
     margin-bottom: 25px;
+  }
+
+  .todosListContainer {
+    grid-template-columns: 1fr;
+    row-gap: 35px;
   }
 }
