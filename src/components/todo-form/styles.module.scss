@@ -36,6 +36,11 @@
   color: var(--white);
   background: var(--yellow);
   letter-spacing: 1.6px;
+  transition: 0.4s ease;
+}
+
+.addBtn:hover {
+  background: var(--bright-yellow);
 }
 
 @media only screen and (max-width: breakpoints.$medium) {
@@ -63,6 +68,5 @@
     padding: 10px;
     font-size: 20px;
     letter-spacing: 1px;
-    transform: none;
   }
 }
