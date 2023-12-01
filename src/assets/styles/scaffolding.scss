@@ -19,9 +19,15 @@ body {
 
 button {
   cursor: pointer;
+  background: transparent;
+  border-color: transparent;
 }
 
-input,
-button {
+input {
   font: inherit;
+}
+
+input:focus-visible,
+button:focus-visible {
+  outline: unset;
 }

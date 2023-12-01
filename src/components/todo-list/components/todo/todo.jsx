@@ -1,5 +1,7 @@
 import { todoType } from '~/common/prop-types/prop-types.js';
 import PropTypes from 'prop-types';
+import { Icon } from '~/components/components.js';
+import { getValidClassNames } from '~/helpers/helpers.js';
 
 import styles from './styles.module.scss';
 
@@ -24,6 +26,12 @@ const Todo = ({ todo, index }) => {
         <p>{title}</p>
         <div className={styles.actionButtons}>
           <input type="checkbox" />
+          <button>
+            <Icon iconName="edit" className={getValidClassNames(styles.icon, styles.editIcon)}/>
+          </button>
+          <button>
+            <Icon iconName="delete" className={getValidClassNames(styles.icon, styles.deleteIcon)}/>
+          </button>
         </div>
     </div>
   );
