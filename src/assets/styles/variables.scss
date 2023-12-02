@@ -1,11 +1,14 @@
 :root {
   --white: #FFF;
+  --light-grey: #F1F1F1;
   --gray: #333333;
   --dark-gray: #222222;
   --yellow: #F0E68C;
   --bright-yellow: #FFEA31;
 
-  --completed-back: #F1F1F1;
+  /* pagination colors*/
+  --page-hover: #f8f8f8;
+  --page-disabled: #F9F9F9;
 
   /* icon hover colors*/
   --green-hover: #90EE90;

@@ -93,6 +93,12 @@ input[type="checkbox"]:focus-visible {
   transition: 555ms color ease-in-out;
 }
 
+.confirmIcon,
+.revertIcon {
+  width: 45px;
+  height: 45px;
+}
+
 .moreActionsBtn {
   display: none;
 }
@@ -106,7 +112,7 @@ input[type="checkbox"]:focus-visible {
 }
 
 .completedTodo {
-  background-color: var(--completed-back) !important;
+  background-color: var(--light-grey) !important;
   text-decoration: line-through;
 }
 

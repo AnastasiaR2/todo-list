@@ -72,12 +72,12 @@ const Todo = ({ todo, index, isEditing, onEditClick, onConfirmEdit, onCancelEdit
           <div className={styles.editingButtons}>
             <IconButton 
               iconName="checkmark"
-              iconClassName={styles.icon}
+              iconClassName={styles.confirmIcon}
               onClick={handleConfirmEdit}
             />
             <IconButton 
               iconName="revert"
-              iconClassName={styles.icon}
+              iconClassName={styles.revertIcon}
               onClick={handleCancelEdit}
             />
           </div>

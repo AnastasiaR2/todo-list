@@ -28,6 +28,7 @@ input {
 }
 
 input:focus-visible,
-button:focus-visible {
+button:focus-visible,
+a:focus-visible {
   outline: unset;
 }

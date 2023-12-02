@@ -2,15 +2,18 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions as todosActions } from '~/store/todos/todos.js';
 import { Todo } from './components/todo/todo.jsx';
+import ReactPaginate from 'react-paginate';
 
 import styles from './styles.module.scss';
 
+const ITEMS_PER_PAGE = 8;
 
 const TodoList = () => {
   const { todos } = useSelector(state => ({
     todos: state.todos?.todos,
   }));
 
+  const [currentPage, setCurrentPage] = useState(0);
   const [editingTodoId, setEditingTodoId] = useState(null);
 
   const dispatch = useDispatch();
@@ -31,6 +34,16 @@ const TodoList = () => {
     setEditingTodoId(null);
   };
 
+  const handlePageChange = (selectedPage) => {
+    setCurrentPage(selectedPage.selected);
+};
+
+  const pageCount = Math.ceil(todos?.length / ITEMS_PER_PAGE);
+
+  const startIndex = currentPage * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const subset = todos?.slice(startIndex, endIndex);
+
   useEffect(() => {
     if (todos) {
       return;
@@ -44,7 +57,7 @@ const TodoList = () => {
     <>
       <h2 className={styles.listTitle}>You have {totalActiveTasks} active tasks:</h2>
       <div className={styles.todosListContainer}>
-        {todos && todos.map((todo, index) => (
+        {subset && subset.map((todo, index) => (
           <Todo 
             key={todo.id} 
             todo={todo} 
@@ -56,6 +69,19 @@ const TodoList = () => {
           />
         ))}
       </div>
+      {pageCount > 1 && (
+        <ReactPaginate
+          previousLabel={'<'}
+          nextLabel={'>'}
+          breakLabel={'...'}
+          pageCount={pageCount}
+          onPageChange={handlePageChange}
+          containerClassName={styles.paginationContainer}
+          pageLinkClassName={styles.pageLink}
+          activeLinkClassName={styles.activePage}
+          disabledLinkClassName={styles.disabledControl}
+        />
+      )}
     </>
   );
 };
