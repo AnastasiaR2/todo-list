@@ -17,6 +17,14 @@ class Todos {
     });
   }
 
+  create(payload) {
+    return this.#http.load(this.#getUrl('add'), {
+      method: HttpMethod.POST,
+      contentType: ContentType.JSON,
+      payload: JSON.stringify(payload),
+    });
+  }
+
   #getUrl(path = '') {
     return `${this.#baseUrl}${this.#basePath}/${path}`;
   }
