@@ -25,6 +25,20 @@ class Todos {
     });
   }
 
+  partialUpdate(id, payload) {
+    return this.#http.load(this.#getUrl(id), {
+      method: HttpMethod.PATCH,
+      contentType: ContentType.JSON,
+      payload: JSON.stringify(payload),
+    });
+  }
+
+  delete(id) {
+    return this.#http.load(this.#getUrl(id), {
+      method: HttpMethod.DELETE,
+    });
+  }
+
   #getUrl(path = '') {
     return `${this.#baseUrl}${this.#basePath}/${path}`;
   }

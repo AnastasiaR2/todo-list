@@ -12,7 +12,6 @@ class Http {
       headers,
       body: payload,
     })
-      .then(this.#checkStatus)
       .then(this.#parseJSON)
       .catch(this.#throwError);
   }
@@ -25,16 +24,6 @@ class Http {
     }
 
     return headers;
-  }
-
-  #checkStatus(response) {
-    const { ok: isOk, status, statusText } = response;
-
-    if (!isOk) {
-      throw new Error(`${status}: ${statusText}`);
-    }
-
-    return response;
   }
 
   #parseJSON(response) {

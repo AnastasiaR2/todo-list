@@ -1,10 +1,12 @@
-import { fetchAll, addTodo } from "./actions.js";
+import { fetchAll, addTodo, updateTodo, deleteTodo } from "./actions.js";
 import { actions } from './todos.slice.js';
 
 const allActions = {
   ...actions,
   fetchAll,
   addTodo,
+  updateTodo,
+  deleteTodo,
 };
 
 export { allActions as actions };

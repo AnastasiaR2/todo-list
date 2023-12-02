@@ -9,4 +9,12 @@ const addTodo = createAsyncThunk(ActionType.ADD, async (payload, { extra }) => {
   return await extra.todosService.create(payload);
 });
 
-export { fetchAll, addTodo };
+const updateTodo = createAsyncThunk(ActionType.UPDATE, async (payload, { extra }) => {
+  return await extra.todosService.partialUpdate(payload.id, payload);
+});
+
+const deleteTodo = createAsyncThunk(ActionType.DELETE, async (payload, { extra }) => {
+  return await extra.todosService.delete(payload.id);
+});
+
+export { fetchAll, addTodo, updateTodo, deleteTodo };

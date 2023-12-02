@@ -1,7 +1,9 @@
+import { useDispatch } from 'react-redux';
 import { todoType } from '~/common/prop-types/prop-types.js';
 import PropTypes from 'prop-types';
 import { Icon } from '~/components/components.js';
 import { getValidClassNames } from '~/helpers/helpers.js';
+import { actions as todosActions } from '~/store/todos/todos.js';
 
 import styles from './styles.module.scss';
 
@@ -9,6 +11,15 @@ const cardBackgroundColors = ['#F0E68C', '#ADD8E6', '#FFDAB9', '#FFB6C1'];
 
 const Todo = ({ todo, index }) => {
   const { todo: title, completed, id } = todo;
+
+  const dispatch = useDispatch();
+
+  const handleCheckboxChange = () => {
+    dispatch(todosActions.updateTodo({
+      id: String(id),
+      completed: !completed
+    }));
+  };
 
   const colorIndex = index % cardBackgroundColors.length;
 
@@ -19,7 +30,7 @@ const Todo = ({ todo, index }) => {
   const isEditing = false;
 
   return (
-    <div style={cardStyle} className={styles.todoCard}>
+    <div style={cardStyle} className={getValidClassNames(styles.todoCard, completed && styles.completedTodo)}>
         <div className={styles.cardHeader}>
           <div className={styles.circlesContainer}>
             <div></div>
@@ -33,7 +44,11 @@ const Todo = ({ todo, index }) => {
             <button className={styles.moreActionsBtn}>
               <Icon iconName="ellipsisVertical" className={getValidClassNames(styles.icon, styles.moreActionsIcon)}/>
             </button>
-            <input type="checkbox" />
+            <input 
+              type="checkbox" 
+              checked={completed}
+              onChange={handleCheckboxChange}
+            />
             <button className={styles.iconBtn}>
               <Icon iconName="edit" className={getValidClassNames(styles.icon, styles.editIcon)}/>
             </button>
