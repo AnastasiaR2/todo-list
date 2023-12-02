@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions as todosActions } from '~/store/todos/todos.js';
 import { Todo } from './components/todo/todo.jsx';
@@ -11,7 +11,25 @@ const TodoList = () => {
     todos: state.todos?.todos,
   }));
 
+  const [editingTodoId, setEditingTodoId] = useState(null);
+
   const dispatch = useDispatch();
+
+  const handleEditClick = (todoId) => {
+    setEditingTodoId(todoId);
+  };
+
+  const handleConfirmEdit = (id, todo) => {
+    dispatch(todosActions.updateTodo({
+      id: String(id),
+      todo
+    }));
+    setEditingTodoId(null);
+  };
+
+  const handleCancelEdit = () => {
+    setEditingTodoId(null);
+  };
 
   useEffect(() => {
     if (todos) {
@@ -27,7 +45,15 @@ const TodoList = () => {
       <h2 className={styles.listTitle}>You have {totalActiveTasks} active tasks:</h2>
       <div className={styles.todosListContainer}>
         {todos && todos.map((todo, index) => (
-          <Todo key={todo.id} todo={todo} index={index} />
+          <Todo 
+            key={todo.id} 
+            todo={todo} 
+            index={index} 
+            isEditing={editingTodoId === todo.id}
+            onEditClick={handleEditClick}
+            onConfirmEdit={handleConfirmEdit}
+            onCancelEdit={handleCancelEdit}
+          />
         ))}
       </div>
     </>

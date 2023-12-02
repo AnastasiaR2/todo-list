@@ -1,7 +1,8 @@
 import { useDispatch } from 'react-redux';
+import { useState } from 'react'; 
 import { todoType } from '~/common/prop-types/prop-types.js';
 import PropTypes from 'prop-types';
-import { Icon } from '~/components/components.js';
+import { IconButton } from '~/components/components.js';
 import { getValidClassNames } from '~/helpers/helpers.js';
 import { actions as todosActions } from '~/store/todos/todos.js';
 
@@ -9,8 +10,9 @@ import styles from './styles.module.scss';
 
 const cardBackgroundColors = ['#F0E68C', '#ADD8E6', '#FFDAB9', '#FFB6C1'];
 
-const Todo = ({ todo, index }) => {
+const Todo = ({ todo, index, isEditing, onEditClick, onConfirmEdit, onCancelEdit }) => {
   const { todo: title, completed, id } = todo;
+  const [editedTitle, setEditedTitle] = useState(title);
 
   const dispatch = useDispatch();
 
@@ -19,6 +21,23 @@ const Todo = ({ todo, index }) => {
       id: String(id),
       completed: !completed
     }));
+  };
+
+  const handleEditClick = () => {
+    onEditClick(id);
+  };
+
+  const handleTitleChange = (e) => {
+    setEditedTitle(e.target.value);
+  };
+
+  const handleConfirmEdit = () => {
+    onConfirmEdit(id, editedTitle);
+  };
+
+  const handleCancelEdit = () => {
+    setEditedTitle(title);
+    onCancelEdit();
   };
 
   const handleDeleteTodo = () => {
@@ -31,8 +50,6 @@ const Todo = ({ todo, index }) => {
     backgroundColor: cardBackgroundColors[colorIndex],
   };
 
-  const isEditing = false;
-
   return (
     <div style={cardStyle} className={getValidClassNames(styles.todoCard, completed && styles.completedTodo)}>
         <div className={styles.cardHeader}>
@@ -41,37 +58,55 @@ const Todo = ({ todo, index }) => {
             <div></div>
             <div></div>
           </div>
-          <p className={styles.todoTitle}>{title}</p>
+          {isEditing ? (
+            <input
+              type="text"
+              value={editedTitle}
+              onChange={handleTitleChange}
+            />
+          ) : (
+            <p className={styles.todoTitle}>{title}</p>
+          )}
         </div>
-        {!isEditing && 
+        {isEditing ? (
+          <div className={styles.editingButtons}>
+            <IconButton 
+              iconName="checkmark"
+              iconClassName={styles.icon}
+              onClick={handleConfirmEdit}
+            />
+            <IconButton 
+              iconName="revert"
+              iconClassName={styles.icon}
+              onClick={handleCancelEdit}
+            />
+          </div>
+        ) : (
           <div className={styles.actionButtons}>
-            <button className={styles.moreActionsBtn}>
-              <Icon iconName="ellipsisVertical" className={getValidClassNames(styles.icon, styles.moreActionsIcon)}/>
-            </button>
+            <IconButton 
+              iconName="ellipsisVertical"
+              className={styles.moreActionsBtn}
+              iconClassName={getValidClassNames(styles.icon, styles.moreActionsIcon)}
+            />
             <input 
               type="checkbox" 
               checked={completed}
               onChange={handleToggleStatus}
             />
-            <button className={styles.iconBtn}>
-              <Icon iconName="edit" className={getValidClassNames(styles.icon, styles.editIcon)}/>
-            </button>
-            <button className={styles.iconBtn} onClick={handleDeleteTodo}>
-              <Icon iconName="delete" className={getValidClassNames(styles.icon, styles.deleteIcon)}/>
-            </button>
+            <IconButton 
+              iconName="edit"
+              className={styles.iconBtn}
+              iconClassName={getValidClassNames(styles.icon, styles.editIcon)}
+              onClick={handleEditClick}
+            />
+            <IconButton 
+              iconName="delete"
+              className={styles.iconBtn}
+              iconClassName={getValidClassNames(styles.icon, styles.deleteIcon)}
+              onClick={handleDeleteTodo}
+            />
           </div>
-        }
-        {isEditing && 
-          <div className={styles.editingButtons}>
-            <button>
-                <Icon iconName="checkmark" className={styles.icon}/>
-            </button>
-            <button>
-              <Icon iconName="revert" className={styles.icon}/>
-            </button>
-          </div>
-        }
-
+        )}
     </div>
   );
 };
@@ -79,6 +114,10 @@ const Todo = ({ todo, index }) => {
 Todo.propTypes = {
   todo: todoType.isRequired,
   index: PropTypes.number.isRequired,
+  isEditing: PropTypes.bool.isRequired,
+  onEditClick: PropTypes.func.isRequired,
+  onConfirmEdit: PropTypes.func.isRequired,
+  onCancelEdit: PropTypes.func.isRequired,
 };
 
 export { Todo };
