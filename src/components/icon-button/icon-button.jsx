@@ -10,11 +10,13 @@ const IconButton = ({
   label = '',
   className = '',
   iconClassName = '',
+  disabled = false,
 }) => (
   <button
     className={getValidClassNames(styles.iconButton, className)}
     type="button"
     onClick={onClick}
+    disabled={disabled}
   >
     <Icon iconName={iconName} className={iconClassName} />
     {label}
@@ -29,4 +31,5 @@ IconButton.propTypes = {
   label: PropTypes.string,
   className: PropTypes.string,
   iconClassName: PropTypes.string,
+  disabled: PropTypes.bool,
 }

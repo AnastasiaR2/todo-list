@@ -59,10 +59,11 @@ const Todo = ({ todo, index, isEditing, onEditClick, onConfirmEdit, onCancelEdit
             <div></div>
           </div>
           {isEditing ? (
-            <input
-              type="text"
+            <textarea
               value={editedTitle}
+              className={styles.todoEditForm}
               onChange={handleTitleChange}
+              autoFocus={true}
             />
           ) : (
             <p className={styles.todoTitle}>{title}</p>
@@ -95,9 +96,10 @@ const Todo = ({ todo, index, isEditing, onEditClick, onConfirmEdit, onCancelEdit
             />
             <IconButton 
               iconName="edit"
-              className={styles.iconBtn}
+              className={getValidClassNames(completed && styles.disabledBtn, styles.iconBtn)}
               iconClassName={getValidClassNames(styles.icon, styles.editIcon)}
               onClick={handleEditClick}
+              disabled={completed}
             />
             <IconButton 
               iconName="delete"
