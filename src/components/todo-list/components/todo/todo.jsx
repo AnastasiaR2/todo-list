@@ -14,12 +14,16 @@ const Todo = ({ todo, index }) => {
 
   const dispatch = useDispatch();
 
-  const handleCheckboxChange = () => {
+  const handleToggleStatus = () => {
     dispatch(todosActions.updateTodo({
       id: String(id),
       completed: !completed
     }));
   };
+
+  const handleDeleteTodo = () => {
+    dispatch(todosActions.deleteTodo({ id: String(id)}));
+  }
 
   const colorIndex = index % cardBackgroundColors.length;
 
@@ -47,12 +51,12 @@ const Todo = ({ todo, index }) => {
             <input 
               type="checkbox" 
               checked={completed}
-              onChange={handleCheckboxChange}
+              onChange={handleToggleStatus}
             />
             <button className={styles.iconBtn}>
               <Icon iconName="edit" className={getValidClassNames(styles.icon, styles.editIcon)}/>
             </button>
-            <button className={styles.iconBtn}>
+            <button className={styles.iconBtn} onClick={handleDeleteTodo}>
               <Icon iconName="delete" className={getValidClassNames(styles.icon, styles.deleteIcon)}/>
             </button>
           </div>
