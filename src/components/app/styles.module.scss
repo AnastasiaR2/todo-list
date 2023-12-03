@@ -4,8 +4,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 95px 25px 134px;
   max-width: 1673px;
+  padding: 95px 25px 134px;
 }
 
 .back {
@@ -15,18 +15,18 @@
   z-index: -1;
   width: 100%;
   height: 377px;
-  background: linear-gradient(93deg, #FFFFE0 24.79%, rgba(218, 238, 227, 0.94) 34.72%, rgba(173, 216, 230, 0.86) 51.23%, rgba(169, 223, 215, 0.84) 61.01%, rgba(163, 233, 193, 0.81) 74.91%, rgba(152, 251, 152, 0.75) 88.02%);;
+  background: linear-gradient(93deg, #FFFFE0 24.79%, rgb(218 238 227 / 94%) 34.72%, rgb(173 216 230 / 86%) 51.23%, rgb(169 223 215 / 84%) 61.01%, rgb(163 233 193 / 81%) 74.91%, rgb(152 251 152 / 75%) 88.02%);;
 }
 
 .title {
+  margin-bottom: 45px;
   color: var(--white);
   letter-spacing: 3.2px;
-  margin-bottom: 45px;
 }
 
 @media only screen and (max-width: breakpoints.$extra-large) {
   .back {
-    background: linear-gradient(70deg, #FFFFE0 17.5%, rgba(224, 240, 226, 0.95) 28.62%, rgba(173, 216, 230, 0.86) 63.03%, rgba(152, 251, 152, 0.75) 79.86%);
+    background: linear-gradient(70deg, #FFFFE0 17.5%, rgb(224 240 226 / 95%) 28.62%, rgb(173 216 230 / 86%) 63.03%, rgb(152 251 152 / 75%) 79.86%);
   }
 }
 
@@ -41,9 +41,9 @@
   }
 
   .title {
+    margin-bottom: 25px;
+    font-weight: 800;
     font-size: 36px;
     letter-spacing: 1.8px;
-    font-weight: 800;
-    margin-bottom: 25px;
   }
 }
