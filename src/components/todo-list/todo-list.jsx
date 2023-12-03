@@ -18,7 +18,7 @@ const TodoList = () => {
 
   const dispatch = useDispatch();
 
-  const handleEditClick = (todoId) => {
+  const handleEditTodo = (todoId) => {
     setEditingTodoId(todoId);
   };
 
@@ -63,7 +63,7 @@ const TodoList = () => {
             todo={todo} 
             index={index} 
             isEditing={editingTodoId === todo.id}
-            onEditClick={handleEditClick}
+            onEditTodo={handleEditTodo}
             onConfirmEdit={handleConfirmEdit}
             onCancelEdit={handleCancelEdit}
           />
@@ -76,8 +76,9 @@ const TodoList = () => {
           breakLabel={'...'}
           pageCount={pageCount}
           onPageChange={handlePageChange}
+          pageRangeDisplayed={2}
+          marginPagesDisplayed={1}
           containerClassName={styles.paginationContainer}
-          pageLinkClassName={styles.pageLink}
           activeLinkClassName={styles.activePage}
           disabledLinkClassName={styles.disabledControl}
         />
