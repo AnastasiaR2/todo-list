@@ -1,0 +1,73 @@
+@use "~/assets/styles/breakpoints.scss";
+
+.todoForm {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 140px;
+}
+
+.todoInput {
+    flex-grow: 1;
+    max-width: 590px;
+    height: 65px;
+    padding: 13px 35px 14px;
+    color: var(--input-text);
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 1.6px;
+    background: var(--input-bg);
+    border: 0.5px solid var(--border-color);
+    border-radius: 45px 0 0 45px;
+    outline: none;
+    box-shadow: 0 7px 15px 5px var(--input-shadow-color);
+}
+
+.todoInput::placeholder {
+  color: var(--input-placeholder-color);
+}
+
+.addBtn {
+  width: 126px;
+  height: 65px;
+  padding: 13px 32px 14px;
+  color: var(--white);
+  font: inherit;
+  letter-spacing: 1.6px;
+  background: var(--yellow);
+  border: 0.5px solid var(--yellow-border);
+  border-radius: 0 45px 45px 0;
+  transition: 555ms ease-in-out;
+}
+
+.addBtn:hover {
+  background: var(--bright-yellow);
+}
+
+@media only screen and (max-width: breakpoints.$medium) {
+  .todoForm {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 70px;
+  }
+  
+  .todoInput {
+    width: 100%;
+    max-width: 485px;
+    height: 44px;
+    margin-bottom: 25px;
+    font-size: 17px;
+    letter-spacing: 0.85px;
+    text-align: center;
+    border-radius: 45px;
+  }
+
+  .addBtn {
+    width: 153px;
+    height: 44px;
+    padding: 10px;
+    font-size: 20px;
+    letter-spacing: 1px;
+    border-radius: 45px;
+  }
+}

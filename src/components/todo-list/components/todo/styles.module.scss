@@ -1,0 +1,257 @@
+@use "~/assets/styles/breakpoints.scss";
+
+.todoCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 372px;
+  height: 356px;
+  padding: 30px 25px 25px;
+  color: var(--white);
+  border: 0.5px solid var(--light-gray-border);
+  border-radius: 45px 20px 45px 45px;
+  box-shadow: 0 7px 15px 5px var(--shadow-color);
+  transition: 555ms ease-in-out;
+}
+
+.cardHeader {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  align-items: center;
+}
+
+.todoTitle {
+  display: -webkit-box;
+  max-width: 322px;
+  max-height: 152px;
+  overflow: hidden;
+  color: var(--white);
+  line-height: 1.2;
+  letter-spacing: 0.96px;
+  text-align: center;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  -webkit-line-clamp: 4; 
+  -webkit-box-orient: vertical;
+}
+
+.circlesContainer {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 25px;
+}
+
+.circlesContainer > div {
+  width: 38px;
+  height: 38px;
+  background: var(--white);
+  border-radius: 50%;
+}
+
+input[type="checkbox"] {
+  display: flex;
+  width: 45px;
+  height: 45px;
+  margin: 0;
+  background-color: transparent;
+  background-image: url('~/assets/images/icons/checkbox-background.svg');
+  appearance: none;
+  place-content: center;
+}
+
+input[type="checkbox"]::before {
+  width: 45px;
+  height: 45px;
+  background-image: url('~/assets/images/icons/checkmark.svg');
+  transform: scale(0);
+  transition: 555ms transform ease-in-out;
+  content: "";
+}
+
+input[type="checkbox"]:checked {
+  background-image: none;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+input[type="checkbox"]:focus-visible {
+  outline: unset;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 81px;
+}
+
+.editingButtons {
+  display: flex;
+  gap: 58px;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  color: var(--white);
+  transition: 555ms color ease-in-out;
+}
+
+.confirmIcon,
+.revertIcon {
+  width: 45px;
+  height: 45px;
+}
+
+.popoverTrigger {
+  display: none;
+}
+
+.editIcon:hover {
+  color: var(--green-hover);
+}
+
+.deleteIcon:hover {
+  color: var(--red-hover);
+}
+
+.completedTodo {
+  text-decoration: line-through;
+  background-color: var(--light-grey) !important;
+}
+
+.todoEditForm {
+  max-width: 322px;
+  height: 152px;
+  color: var(--white);
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+.disabledBtn {
+  pointer-events: none;
+}
+
+.popoverContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 153px;
+  height: 68px;
+  padding-left: 16px;
+  background-color: var(--white);
+  border-radius: 20px 20px 45px;
+  box-shadow: 0 7px 15px 5px var(--shadow-color);
+}
+
+.popoverContent button {
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.48px;
+}
+
+.popoverArrow {
+  fill: var(--white);
+}
+
+@media only screen and (max-width: breakpoints.$medium) {
+  .todoCard {
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    height: fit-content;
+    min-height: 104px;
+    padding: 8px 25px 15px;
+    border-radius: 20px 20px 45px;
+  }
+
+  .cardHeader {
+    align-items: flex-start;
+  }
+
+  .todoTitle {
+    display: block;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.2;
+    letter-spacing: 0.48px;
+    text-align: left;
+  }
+
+  .circlesContainer {
+    gap: 15px;
+    margin-bottom: 8px;
+  }
+  
+  .circlesContainer > div {
+    width: 17px;
+    height: 17px;
+  }
+
+  input[type="checkbox"] {
+    width: 25px;
+    height: 25px;
+  }
+
+  input[type="checkbox"]::before {
+    width: 25px;
+    height: 25px;
+  }
+
+  .actionButtons {
+    flex-direction: column;
+    align-items: center;
+    gap: 23px;
+  }
+
+  .popoverTrigger {
+    display: block;
+  }
+
+  .icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .iconBtn {
+    display: none;
+  }
+
+  .moreActionsIcon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .todoEditForm {
+    width: 280px;
+    height: 57px;
+    color: var(--white);
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.48px;
+    text-align: left;
+    background-color: transparent;
+  }
+
+  .confirmIcon,
+  .revertIcon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .editingButtons {
+    align-self: center;
+    gap: 85px;
+    margin-top: 12px;
+  }
+
+  .todoCard.editing {
+    flex-direction: column;
+    padding-bottom: 3px;
+  }
+}
