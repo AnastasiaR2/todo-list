@@ -1,4 +1,4 @@
-import { fetchAll, addTodo, updateTodo, deleteTodo } from "./actions.js";
+import { addTodo, deleteTodo, fetchAll, updateTodo } from './actions.js';
 import { actions } from './todos.slice.js';
 
 const allActions = {
@@ -11,6 +11,3 @@ const allActions = {
 
 export { allActions as actions };
 export { reducer } from './todos.slice.js';
-
-
-

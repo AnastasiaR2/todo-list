@@ -1,6 +1,8 @@
-import { createSlice, isAnyOf, current } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+
 import { DataStatus } from '~/common/enums/enums.js';
-import { fetchAll, addTodo, updateTodo, deleteTodo } from './actions.js';
+
+import { addTodo, deleteTodo, fetchAll, updateTodo } from './actions.js';
 
 const initialState = {
   todos: null,
@@ -26,7 +28,7 @@ const { reducer, actions, name } = createSlice({
       const updatedTodo = action.payload;
       state.todos.todos = todos.map((todo) => {
         return todo.id === updatedTodo.id ? updatedTodo : todo;
-      })
+      });
       state.dataStatus = DataStatus.FULFILLED;
     });
     builder.addCase(deleteTodo.fulfilled, (state, action) => {
@@ -55,7 +57,7 @@ const { reducer, actions, name } = createSlice({
         state.dataStatus = DataStatus.REJECTED;
       },
     );
-  }
+  },
 });
 
 export { actions, name, reducer };

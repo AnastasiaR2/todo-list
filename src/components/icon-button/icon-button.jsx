@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+
 import { Icon } from '~/components/components.js';
 import { getValidClassNames } from '~/helpers/helpers.js';
 
@@ -32,4 +33,4 @@ IconButton.propTypes = {
   className: PropTypes.string,
   iconClassName: PropTypes.string,
   disabled: PropTypes.bool,
-}
+};

@@ -5,7 +5,7 @@ class Todos {
   #basePath;
   #http;
 
-  constructor ({ baseUrl, http }) {
+  constructor({ baseUrl, http }) {
     this.#baseUrl = baseUrl;
     this.#http = http;
     this.#basePath = ApiPath.TODOS;

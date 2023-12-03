@@ -1,14 +1,14 @@
 import { fileURLToPath } from 'node:url';
 
-import { defineConfig } from 'vite';
-import svgr from "vite-plugin-svgr";
 import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
+import svgr from 'vite-plugin-svgr';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-    svgr({ 
+    svgr({
       svgrOptions: {
         exportAsDefault: false,
       },
@@ -16,7 +16,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '~': fileURLToPath(new URL('src', import.meta.url))
-    }
-  }
-})
+      '~': fileURLToPath(new URL('src', import.meta.url)),
+    },
+  },
+});

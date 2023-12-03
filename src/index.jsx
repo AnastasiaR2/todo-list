@@ -5,8 +5,8 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import { store, persistor } from '~/store/store.js';
 import { App } from '~/components/app/app.jsx';
+import { persistor, store } from '~/store/store.js';
 
 const root = createRoot(document.querySelector('#root'));
 
@@ -17,5 +17,5 @@ root.render(
         <App />
       </PersistGate>
     </Provider>
-  </StrictMode>
+  </StrictMode>,
 );

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+
 import { TodoKey } from '~/common/enums/enums.js';
 
 const todoType = PropTypes.exact({
